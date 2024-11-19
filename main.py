@@ -120,41 +120,55 @@ def list_items_in_category(category):
 if __name__ == "__main__":
     #  Testing will go down here:
     # Add items
-    add_item("Screwdriver", 50, "Tool Shed", "Shelf A", "Tools")
-    add_item("Hammer", 30, "Tool Shed", "Shelf B", "Tools")
-    add_item("Paint", 20, "Storage Room", "Rack 3", "Supplies")
-    add_item("Wrench", 15, "Tool Shed", "Shelf C", "Tools")
-    add_item("Drill", 10, "Tool Shed", "Shelf D", "Tools")
-    add_item("Brush", 25, "Storage Room", "Rack 2", "Supplies")
-    add_item("Ladder", 5, "Garage", "Corner", "Equipment")
 
-    # Delete an item
-    delete_item("Hammer")
+    cont = True
 
-    # Search for items
-    search_item("Screwdriver")
-    search_item("Hammer")  # Should indicate item not found
+    while cont:
 
-    # Find item location
-    find_item_location("Paint")
+        user_input = int(input(
+            'Add an item (1)\n'
+            'Delete an item (2)\n'
+            'View an item and their attributes (3)\n'
+            'Get the location of one of your items (4)\n'
+            'View items by category (5)\n'
+            'View items by location (6)\n'
+            'Enter your choice: '
+        ))
 
-    # View items by category
-    view_items_by_category("Tools")
-    view_items_by_category("Supplies")
+        if user_input == 1:
+            print('To add an item, enter Name, Quantity, General Location, Specific Location, and Category.')
+            item_name = input('Enter item name: ')
+            item_quantity = int(input('Enter item quantity: '))
+            item_general_location = input('Enter item general location: ')
+            item_specific_location = input('Enter item specific location: ')
+            item_category = input('Enter item category: ')
+            add_item(item_name, item_quantity, item_general_location, item_specific_location, item_category)
 
-    # View items by general location
-    view_items_by_location("Tool Shed")
-    view_items_by_location("Garage")
+        elif user_input == 2:
+            item_name = input('To delete an item, input the item\'s name: ')
+            delete_item(item_name)
 
-    # List items in a category if an item is not found
-    item_name = "Chainsaw"
-    item = hash_table.search(item_name)
-    if item is None:
-        print(f"Item '{item_name}' not found.")
-        category = "Tools"
-        print(f"Here are items in the '{category}' category:")
-        view_items_by_category(category)
+        elif user_input == 3:
+            item_name = input('Enter the name of the item you want to view: ')
+            search_item(item_name)
 
+        elif user_input == 4:
+            item_name = input('Enter the name of the item to find its location: ')
+            find_item_location(item_name)
 
+        elif user_input == 5:
+            item_category = input('Enter the category you want to view: ')
+            view_items_by_category(item_category)
 
+        elif user_input == 6:
+            general_location = input('Enter the general location you want to view: ')
+            view_items_by_location(general_location)
+
+        else:
+            print('Invalid choice. Please enter a number between 1 and 6.')
+
+        if input('Would you like to continue? (y/n):  ') == 'y':
+            cont = True
+        else:
+            cont = False
 
