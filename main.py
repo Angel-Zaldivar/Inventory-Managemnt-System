@@ -121,19 +121,24 @@ if __name__ == "__main__":
     #  Testing will go down here:
     # Add items
 
+    print("Hi! Welcome back to BinBase!")
+    print()
+
     cont = True
 
     while cont:
-
+        print('Please choose an option:\n')
         user_input = int(input(
             'Add an item (1)\n'
             'Delete an item (2)\n'
             'View an item and their attributes (3)\n'
             'Get the location of one of your items (4)\n'
             'View items by category (5)\n'
-            'View items by location (6)\n'
+            'View items by location (6)\n\n'
             'Enter your choice: '
         ))
+
+        print()
 
         if user_input == 1:
             print('To add an item, enter Name, Quantity, General Location, Specific Location, and Category.')
@@ -146,29 +151,38 @@ if __name__ == "__main__":
 
         elif user_input == 2:
             item_name = input('To delete an item, input the item\'s name: ')
+            print()
             delete_item(item_name)
 
         elif user_input == 3:
             item_name = input('Enter the name of the item you want to view: ')
+            print()
             search_item(item_name)
 
         elif user_input == 4:
             item_name = input('Enter the name of the item to find its location: ')
+            print()
             find_item_location(item_name)
 
         elif user_input == 5:
             item_category = input('Enter the category you want to view: ')
+            print()
             view_items_by_category(item_category)
 
         elif user_input == 6:
             general_location = input('Enter the general location you want to view: ')
+            print()
             view_items_by_location(general_location)
 
         else:
             print('Invalid choice. Please enter a number between 1 and 6.')
 
+        print()
+
         if input('Would you like to continue? (y/n):  ') == 'y':
+            print()
             cont = True
         else:
             cont = False
 
+    print('Thank you for using BinBase!\nWe hope to see you again!')
